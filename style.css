@@ -14,6 +14,7 @@ body {
 }
 
 .book-card {
+  box-sizing: border-box;
   width: 250px;
   height: 250px;
   background-color: red;
@@ -21,7 +22,6 @@ body {
   flex-direction: column;
   align-items: center;
   border-radius: 1rem;
-  justify-content: space-between;
 }
 
 #book-container {
@@ -46,4 +46,12 @@ body {
 .book-details li {
   font-size: 2rem;
   list-style: none;
+}
+
+.book-details {
+  background-color: antiquewhite;
+  flex-grow: 1;
+  min-width: 230px;
+  border-radius: 0.5rem;
+  margin: 10px 10px;
 }
