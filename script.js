@@ -21,13 +21,38 @@ addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
 
+
+function createBookDetails(book) {
+  const bookDetails = document.createElement('div');
+  bookDetails.className = 'book-details';
+  
+  const unorderedList = document.createElement('ul');
+  
+  const title = document.createElement('li');
+  const author = document.createElement('li');
+  const pages = document.createElement('li');
+  const read = document.createElement('li');
+  
+  title.textContent = book.title;
+  author.textContent = book.author;
+  pages.textContent = book.pages;
+  read.textContent = true;
+
+  unorderedList.appendChild(title);
+  unorderedList.appendChild(author);
+  unorderedList.appendChild(pages);
+  unorderedList.appendChild(read);
+
+  bookDetails.appendChild(unorderedList)
+
+  return bookDetails;
+}
+
 function createBookCard(book) {
   const tempBook = document.createElement('div');
   tempBook.className = 'book-card';
 
-  const bookDetails = document.createElement('div');
-  bookDetails.className = 'book-details';
-  bookDetails.textContent = `<h1>${book.pages}\n${book.author}<h1>`;
+  const bookDetails = createBookDetails(book);
 
   const buttonsContainer = document.createElement('div');
   buttonsContainer.className = 'buttons-container'
