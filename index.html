@@ -13,15 +13,20 @@
   </div>
   <div class="navbar">
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#">HOME</a></li>
+      <li><a href="#">ABOUT</a></li>
+      <li><a href="#">CONTACT</a></li>
     </ul>
   </div>
   <div class="new-book">
-    <button id="new-book-button">NEW BOOK</button>
+    <div class="book-button-container">
+      <button id="new-book-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
+        <p>NEW BOOK</p>
+      </button>
+    </div>
+    <div id="book-container"></div>
   </div>
-  <div id="book-container"></div>
   <dialog id="new-book-dialog">
     <form>
       <ul>
