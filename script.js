@@ -33,10 +33,10 @@ function createBookDetails(book) {
   const pages = document.createElement('li');
   const read = document.createElement('li');
   
-  title.textContent = book.title;
-  author.textContent = book.author;
-  pages.textContent = book.pages;
-  read.textContent = true;
+  title.textContent = `${book.title}`;
+  author.textContent = `Written by ${book.author}`;
+  pages.textContent = `This book has ${book.pages} pages`;
+  read.textContent = (book.read === true) ? "Read" : "Not read";
 
   unorderedList.appendChild(title);
   unorderedList.appendChild(author);
