@@ -84,13 +84,9 @@ function loopThroughLibrary() {
 
 loopThroughLibrary();
 
-const newBookButton = document.createElement('button');
-newBookButton.textContent = 'NEW BOOK';
-
-const newBookDialog = document.getElementById('new-book-dialog')
+const newBookButton = document.getElementById('new-book-button');
+const newBookDialog = document.getElementById('new-book-dialog');
 
 newBookButton.addEventListener("click", () => {
   newBookDialog.showModal();
 })
-
-document.body.appendChild(newBookButton);
