@@ -16,10 +16,12 @@ function addBookToLibrary(book) {
 book1 = new Book('alpha', '0', 200, true);
 book2 = new Book('beta', '1', 300, false);
 book3 = new Book('gamma', '2', 400, false);
+book4 = new Book('gamma', '2', 400, false);
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
+addBookToLibrary(book4);
 
 
 function createBookDetails(book) {
