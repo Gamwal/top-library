@@ -10,26 +10,28 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  min-width: 300px;
 }
 
 .book-card {
   box-sizing: border-box;
-  width: 250px;
-  height: 250px;
   background-color: rgb(156, 82, 38);
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 1rem;
+  padding: 1rem 1rem;
+  gap: 1rem;
+  align-items: stretch;
 }
 
 #book-container {
   box-sizing: border-box;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  /* margin: 2rem; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  gap: 2rem;
+  grid-auto-rows: 25rem;
 }
 
 .header {
@@ -38,14 +40,12 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: rgb(250, 235, 215);
-  width: 100vw;
   padding: 2rem 0rem;
   color: rgb(156, 82, 38);
 }
 
 .navbar {
   background-color: rgb(156, 82, 38);
-  width: 100vw;
   display: flex;
   justify-content: center;
   padding: 1rem 0rem;
@@ -65,17 +65,33 @@ body {
 
 .navbar ul {
   display: flex;
-  gap: 10rem;
+  gap: 10vw;
   flex-wrap: wrap;
 }
 
+.new-book {
+  box-sizing: border-box;
+  margin: 2rem 2rem;
+  min-width: min(1200px, 90vw);
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
 .buttons-container {
-  /* background-color: blue; */
-  /* height: 50px; */
-  /* flex-grow: 1; */
   display: flex;
   gap: 1rem;
-  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.buttons-container button {
+  box-sizing: border-box;
+  flex-basis: 16rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 2rem;
+  flex-grow: 1;
+  max-width: 20rem;
 }
 
 .book-details li {
@@ -87,19 +103,12 @@ body {
   box-sizing: border-box;
   background-color: rgb(250, 235, 215);
   flex-grow: 1;
-  min-width: 230px;
   border-radius: 0.5rem;
-  margin: 10px 10px;
-  padding: 1rem 1rem;
 }
 
 dialog {
   box-sizing: border-box;
   padding:2rem;
-}
-
-.new-book {
-  padding-top: 2rem;
 }
 
 .book-button-container {
