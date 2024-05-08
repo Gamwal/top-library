@@ -92,3 +92,13 @@ const newBookDialog = document.getElementById('new-book-dialog');
 newBookButton.addEventListener("click", () => {
   newBookDialog.showModal();
 })
+
+const addBookToLibraryButton = document.getElementById('add-book-to-library');
+
+addBookToLibraryButton.addEventListener('click', (event) => {
+  const title = document.getElementById('title');
+  const author = document.getElementById('author');
+  const pages = document.getElementById('pages');
+  console.log(`${title.value}, ${author.value}, ${pages.value}, ${read.value}`)
+  event.preventDefault();
+})
