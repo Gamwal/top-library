@@ -28,7 +28,7 @@
     <div id="book-container"></div>
   </div>
   <dialog id="new-book-dialog">
-    <form>
+    <form class="new-book-form">
       <ul>
         <li>
           <label for="title">Title</label>
@@ -40,19 +40,25 @@
         </li>
         <li>
           <label for="pages">Number of Pages</label>
-          <input type="text" id="pages" name="pages">
+          <input type="number" id="pages" name="pages">
         </li>
         <li>
-          <fieldset>
-            <legend>Have you read this book?</legend>
-            <label for="yes">Yes</label>
-            <input type="radio" id="yes" name="read" value="yes">
-            <label for="no">No</label>
-            <input type="radio" id="no" name="read" value="no" checked>
+          <fieldset id="read">
+            <p>Read this book?</p>
+            <div>
+              <div>
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" name="read" value="yes">
+              </div>
+              <div>
+                <label for="no">No</label>
+                <input type="radio" id="no" name="read" value="no" checked>
+              </div>
+            </div>
           </fieldset>
         </li>
       </ul>
-      <button type="submit">Add new book</button>
+      <button id="add-book-to-library" type="submit">Add new book</button>
     </form>
   </dialog>
   <script src="./script.js"></script>
