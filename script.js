@@ -1,4 +1,6 @@
-const myLibrary = [];
+let myLibrary = [];
+
+let indexedLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -7,10 +9,21 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+function indexBooks() {
+  indexedLibrary = [];
+  myLibrary.forEach((item, index) => {
+    item.index = index;
+    indexedLibrary.push(item);
+  });
+}
+
 function addBookToLibrary(book) {
   if (book instanceof Book) {
-    myLibrary.push(book);
+    if (book.title !== '' && book.author !== '' && book.pages !== ''){
+      myLibrary.push(book);
+    }
   }
+  indexBooks();
 }
 
 book1 = new Book('alpha', '0', 200, "yes");
@@ -60,7 +73,10 @@ function createBookCard(book) {
   buttonsContainer.className = 'buttons-container'
 
   const removeBookButton = document.createElement('button');
-  removeBookButton.textContent = "remove book"
+  removeBookButton.className = "remove-book";
+  removeBookButton.textContent = "remove book";
+  removeBookButton.value = book.index;
+
   const changeReadStatusButton = document.createElement('button');
   changeReadStatusButton.textContent = "change read status"
 
@@ -73,6 +89,24 @@ function createBookCard(book) {
   return tempBook;
 }
 
+function addEventListenerToRemoveButton() {
+  const removeBookButton = document.getElementsByClassName('remove-book');
+
+  for (let button of [...removeBookButton]) {
+    const tempLibrary = [];
+    button.addEventListener("click", (event) => {
+      console.log(`${event.target.value}`)
+      indexedLibrary.forEach((item) => {
+        if (String(item.index) !== event.target.value) {
+          tempLibrary.push(item);
+        }
+      })
+      myLibrary = tempLibrary;
+      indexBooks();
+      loopThroughLibrary();
+    })
+  }
+}
 
 function loopThroughLibrary() {
   const bookContainer = document.getElementById('book-container');
@@ -80,6 +114,7 @@ function loopThroughLibrary() {
   for (const book of myLibrary) {
     bookContainer.appendChild(createBookCard(book));
   }
+  addEventListenerToRemoveButton()
 }
 
 loopThroughLibrary();
@@ -99,6 +134,17 @@ function getReadValue() {
   return fieldsetInput.value;
 }
 
+function closeDialogWindow() {
+  const title = document.getElementById('title');
+  const author = document.getElementById('author');
+  const pages = document.getElementById('pages');
+
+  if (title.value !== '' && author.value !== '' && pages.value !== ''){
+    newBookDialog.close();
+    document.getElementById('book-form').reset();
+  }
+}
+
 addBookToLibraryButton.addEventListener('click', (event) => {
   const title = document.getElementById('title');
   const author = document.getElementById('author');
@@ -106,13 +152,12 @@ addBookToLibraryButton.addEventListener('click', (event) => {
   const readStatus = getReadValue();
   
   const bookToAdd = new Book(title.value, author.value, pages.value, readStatus);
+
   addBookToLibrary(bookToAdd);
 
   loopThroughLibrary();
 
-
-
-  newBookDialog.close();
+  closeDialogWindow();
 
   event.preventDefault();
-})
+});
