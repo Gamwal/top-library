@@ -70,12 +70,12 @@ function createBookCard(book) {
 
   const removeBookButton = document.createElement('button');
   removeBookButton.className = "remove-book";
-  removeBookButton.textContent = "remove book";
+  removeBookButton.textContent = "Remove Book";
   removeBookButton.value = book.index;
 
   const changeReadStatusButton = document.createElement('button');
   changeReadStatusButton.className = "change-status";
-  changeReadStatusButton.textContent = "change read status";
+  changeReadStatusButton.textContent = "Change Read Status";
   changeReadStatusButton.value = book.index;
 
   buttonsContainer.appendChild(removeBookButton);
