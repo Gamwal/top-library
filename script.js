@@ -78,7 +78,9 @@ function createBookCard(book) {
   removeBookButton.value = book.index;
 
   const changeReadStatusButton = document.createElement('button');
-  changeReadStatusButton.textContent = "change read status"
+  changeReadStatusButton.className = "change-status";
+  changeReadStatusButton.textContent = "change read status";
+  changeReadStatusButton.value = book.index;
 
   buttonsContainer.appendChild(removeBookButton);
   buttonsContainer.appendChild(changeReadStatusButton);
@@ -89,13 +91,34 @@ function createBookCard(book) {
   return tempBook;
 }
 
+function addEventListenerToStatusButton() {
+  const changeReadStatus = document.getElementsByClassName('change-status');
+
+  for (let button of [...changeReadStatus]) {
+    const tempLibrary = [];
+    button.addEventListener("click", (event) => {
+      indexedLibrary.forEach((item) => {
+        if (String(item.index) === event.target.value) {
+          if (item.read === 'yes')
+            item.read = 'no';
+          else
+            item.read = 'yes';
+        }
+        tempLibrary.push(item);
+      })
+      myLibrary = tempLibrary;
+      indexBooks();
+      loopThroughLibrary();
+    })
+  }
+}
+
 function addEventListenerToRemoveButton() {
   const removeBookButton = document.getElementsByClassName('remove-book');
 
   for (let button of [...removeBookButton]) {
     const tempLibrary = [];
     button.addEventListener("click", (event) => {
-      console.log(`${event.target.value}`)
       indexedLibrary.forEach((item) => {
         if (String(item.index) !== event.target.value) {
           tempLibrary.push(item);
@@ -115,6 +138,7 @@ function loopThroughLibrary() {
     bookContainer.appendChild(createBookCard(book));
   }
   addEventListenerToRemoveButton()
+  addEventListenerToStatusButton()
 }
 
 loopThroughLibrary();
@@ -161,3 +185,4 @@ addBookToLibraryButton.addEventListener('click', (event) => {
 
   event.preventDefault();
 });
+
