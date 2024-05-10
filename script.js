@@ -168,5 +168,5 @@ addBookToLibraryButton.addEventListener('click', (event) => {
 
   closeDialogWindow();
 
-  event.preventDefault();
+  // event.preventDefault();
 });
