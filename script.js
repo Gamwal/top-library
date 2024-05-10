@@ -26,15 +26,11 @@ function addBookToLibrary(book) {
   indexBooks();
 }
 
-book1 = new Book('alpha', '0', 200, "yes");
-book2 = new Book('beta', '1', 300, "no");
-book3 = new Book('gamma', '2', 400, "yes");
-book4 = new Book('gamma', '2', 400, "no");
+book1 = new Book('The Prince', 'Niccolo Machiavelli', 231, "no");
+book2 = new Book('The Alchemist', 'Paulo Coelho', 195, "yes");
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
-addBookToLibrary(book3);
-addBookToLibrary(book4);
 
 
 function createBookDetails(book) {
@@ -48,9 +44,9 @@ function createBookDetails(book) {
   const pages = document.createElement('li');
   const read = document.createElement('li');
   
-  title.textContent = `${book.title}`;
-  author.textContent = `Written by ${book.author}`;
-  pages.textContent = `This book has ${book.pages} pages`;
+  title.textContent = book.title;
+  author.textContent = book.author;
+  pages.textContent = book.pages;
   read.textContent = (book.read === "yes") ? "Read" : "Not read";
 
   unorderedList.appendChild(title);
