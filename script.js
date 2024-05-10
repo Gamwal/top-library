@@ -91,54 +91,39 @@ function createBookCard(book) {
   return tempBook;
 }
 
-function addEventListenerToStatusButton() {
-  const changeReadStatus = document.getElementsByClassName('change-status');
+document.getElementById('book-container').addEventListener('click', (event) => {
+  const target = event.target;
 
-  for (let button of [...changeReadStatus]) {
-    const tempLibrary = [];
-    button.addEventListener("click", (event) => {
-      indexedLibrary.forEach((item) => {
-        if (String(item.index) === event.target.value) {
-          if (item.read === 'yes')
-            item.read = 'no';
-          else
-            item.read = 'yes';
-        }
-        tempLibrary.push(item);
-      })
-      myLibrary = tempLibrary;
-      indexBooks();
-      loopThroughLibrary();
-    })
+  if (target.classList.contains('change-status')) {
+    // Handle change read status
+    const index = target.value;
+    toggleReadStatus(index);
+  } else if (target.classList.contains('remove-book')) {
+    // Handle remove book
+    const index = target.value;
+    removeBook(index);
   }
+});
+
+function toggleReadStatus(index) {
+  const book = myLibrary[index];
+  book.read = book.read === 'yes' ? 'no' : 'yes';
+  loopThroughLibrary();
 }
 
-function addEventListenerToRemoveButton() {
-  const removeBookButton = document.getElementsByClassName('remove-book');
-
-  for (let button of [...removeBookButton]) {
-    const tempLibrary = [];
-    button.addEventListener("click", (event) => {
-      indexedLibrary.forEach((item) => {
-        if (String(item.index) !== event.target.value) {
-          tempLibrary.push(item);
-        }
-      })
-      myLibrary = tempLibrary;
-      indexBooks();
-      loopThroughLibrary();
-    })
-  }
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  indexBooks();
+  loopThroughLibrary();
 }
 
 function loopThroughLibrary() {
   const bookContainer = document.getElementById('book-container');
   bookContainer.textContent = '';
-  for (const book of myLibrary) {
+
+  myLibrary.forEach((book) => {
     bookContainer.appendChild(createBookCard(book));
-  }
-  addEventListenerToRemoveButton()
-  addEventListenerToStatusButton()
+  });
 }
 
 loopThroughLibrary();
@@ -185,4 +170,3 @@ addBookToLibraryButton.addEventListener('click', (event) => {
 
   event.preventDefault();
 });
-
