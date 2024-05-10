@@ -13,10 +13,10 @@ function addBookToLibrary(book) {
   }
 }
 
-book1 = new Book('alpha', '0', 200, true);
-book2 = new Book('beta', '1', 300, false);
-book3 = new Book('gamma', '2', 400, false);
-book4 = new Book('gamma', '2', 400, false);
+book1 = new Book('alpha', '0', 200, "yes");
+book2 = new Book('beta', '1', 300, "no");
+book3 = new Book('gamma', '2', 400, "yes");
+book4 = new Book('gamma', '2', 400, "no");
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
@@ -38,7 +38,7 @@ function createBookDetails(book) {
   title.textContent = `${book.title}`;
   author.textContent = `Written by ${book.author}`;
   pages.textContent = `This book has ${book.pages} pages`;
-  read.textContent = (book.read === true) ? "Read" : "Not read";
+  read.textContent = (book.read === "yes") ? "Read" : "Not read";
 
   unorderedList.appendChild(title);
   unorderedList.appendChild(author);
@@ -76,11 +76,9 @@ function createBookCard(book) {
 
 function loopThroughLibrary() {
   const bookContainer = document.getElementById('book-container');
-
+  bookContainer.textContent = '';
   for (const book of myLibrary) {
     bookContainer.appendChild(createBookCard(book));
-
-    // console.log(book.author);
   }
 }
 
@@ -95,10 +93,26 @@ newBookButton.addEventListener("click", () => {
 
 const addBookToLibraryButton = document.getElementById('add-book-to-library');
 
+
+function getReadValue() {
+  const fieldsetInput = document.querySelector('fieldset input[type="radio"]:checked');
+  return fieldsetInput.value;
+}
+
 addBookToLibraryButton.addEventListener('click', (event) => {
   const title = document.getElementById('title');
   const author = document.getElementById('author');
   const pages = document.getElementById('pages');
-  console.log(`${title.value}, ${author.value}, ${pages.value}, ${read.value}`)
+  const readStatus = getReadValue();
+  
+  const bookToAdd = new Book(title.value, author.value, pages.value, readStatus);
+  addBookToLibrary(bookToAdd);
+
+  loopThroughLibrary();
+
+
+
+  newBookDialog.close();
+
   event.preventDefault();
 })
