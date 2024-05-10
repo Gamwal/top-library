@@ -126,7 +126,7 @@ body {
 }
 
 .book-details li {
-  font-size: 2rem;
+  font-size: 2.5rem;
   list-style: none;
 }
 
@@ -136,6 +136,7 @@ body {
   flex-grow: 1;
   border-radius: 0.5rem;
   padding: 1rem 1rem;
+  text-align: center;
 }
 
 dialog {
