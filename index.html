@@ -1,66 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Library</title>
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-  <div class="header">
-    <h1>Simple Library</h1>
-    <p>Track your favorite books...</p>
-  </div>
-  <div class="navbar">
-    <ul>
-      <li><a href="#">HOME</a></li>
-      <li><a href="#">ABOUT</a></li>
-      <li><a href="#">CONTACT</a></li>
-    </ul>
-  </div>
-  <div class="new-book">
-    <div class="book-button-container">
-      <button id="new-book-button">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
-        <p>ADD BOOK</p>
-      </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Library</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Simple Library</h1>
+      <p>Track your favorite books...</p>
     </div>
-    <div id="book-container"></div>
-  </div>
-  <dialog id="new-book-dialog">
-    <form class="new-book-form" id="book-form">
+    <div class="navbar">
       <ul>
-        <li>
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" required>
-        </li>
-        <li>
-          <label for="author">Author</label>
-          <input type="text" id="author" name="author" required>
-        </li>
-        <li>
-          <label for="pages">Number of Pages</label>
-          <input type="number" id="pages" name="pages" required>
-        </li>
-        <li>
-          <fieldset id="read">
-            <p>Read this book?</p>
-            <div>
-              <div>
-                <label for="yes">Yes</label>
-                <input type="radio" id="yes" name="read" value="yes">
-              </div>
-              <div>
-                <label for="no">No</label>
-                <input type="radio" id="no" name="read" value="no" checked>
-              </div>
-            </div>
-          </fieldset>
-        </li>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">CONTACT</a></li>
       </ul>
-      <button id="add-book-to-library" type="submit">Add new book</button>
-    </form>
-  </dialog>
-  <script src="./script.js"></script>
-</body>
+    </div>
+    <div class="new-book">
+      <div class="book-button-container">
+        <button id="new-book-button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>plus</title>
+            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+          </svg>
+          <p>ADD BOOK</p>
+        </button>
+      </div>
+      <div id="book-container"></div>
+    </div>
+    <dialog id="new-book-dialog">
+      <form class="new-book-form" id="book-form" novalidate>
+        <ul>
+          <li>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required />
+          </li>
+          <li>
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" required />
+          </li>
+          <li>
+            <label for="pages">Number of Pages</label>
+            <input type="number" id="pages" name="pages" required />
+          </li>
+          <li>
+            <fieldset id="read">
+              <p>Read this book?</p>
+              <div>
+                <div>
+                  <label for="yes">Yes</label>
+                  <input type="radio" id="yes" name="read" value="yes" />
+                </div>
+                <div>
+                  <label for="no">No</label>
+                  <input type="radio" id="no" name="read" value="no" checked />
+                </div>
+              </div>
+            </fieldset>
+          </li>
+        </ul>
+        <button id="add-book-to-library" type="submit">Add new book</button>
+      </form>
+    </dialog>
+    <script src="./script.js"></script>
+  </body>
 </html>
